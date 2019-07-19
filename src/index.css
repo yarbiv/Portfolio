@@ -39,6 +39,11 @@ body {
   text-decoration: none;
 }
 
+.link-child:hover {
+  transition: color 0.45s ease;
+  color: #9ED29D;
+}
+
 #line {
   border: 0.75px solid #9ED29D;
   width: 50vw

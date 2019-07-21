@@ -1,7 +1,7 @@
 import React from 'react';
 import About from './components/About.js'
 import Home from './components/Home.js'
-import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function NoMatch() {
   return (
@@ -15,7 +15,7 @@ function NoMatch() {
 function App() {
   return (
     <div class='center'>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/about" component={About} />

@@ -1,67 +1,142 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Serif+Caption:regular,bold,italic&subset=latin,latin-ext');
 
-body {
-  margin: 0;
-  font-family: "PT Serif Caption", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@media only screen and (max-width: 768px) {
+
+  body {
+    margin: 0;
+    font-family: "PT Serif Caption", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .center {
+    text-align: center;
+    width: 100vw;
+    height: 75vh;
+
+    position:absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    overflow:auto;
+  }
+
+  .above-line-text {
+    color: #757474;
+    font-size: 4vw;
+  }
+
+  .link-parent {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .link-child {
+    margin: 1vw;
+    color: #757474;
+    text-decoration: none;
+    font-size: 3.75vw;
+  }
+
+  .link-child:hover {
+    transition: color 0.45s ease;
+    color: #9ED29D;
+  }
+
+  .about-text {
+    margin-left: auto;
+    margin-right: auto;
+    color: #757474;
+    word-wrap: break-word;
+    width: 80vw;
+    text-align: center;
+    font-size: 4vw;
+  }
+
+  #line {
+    border: 0.75px solid #9ED29D;
+    width: 90vw;
+  }
+
+  #name-text {
+    color: #9ED29D;
+  }
+
+  h1 {
+    padding-bottom: 2vw;
+    font-size: 9vw;
+  }
 }
 
-.center {
-  text-align: center;
-  width: 100vw;
-  height: 75vh;
+@media only screen and (min-width: 768px) {
 
-  position:absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin:auto;
+  body {
+    margin: 0;
+    font-family: "PT Serif Caption", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-  overflow:auto;
-}
+  .center {
+    text-align: center;
+    width: 100vw;
+    height: 75vh;
 
-.above-line-text {
-  color: #757474;
-}
+    position:absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin:auto;
 
-.link-parent {
-  display: inline-flex;
-  justify-content: center;
-  width: 100%;
-}
+    overflow:auto;
+  }
 
-.link-child {
-  margin: 1vw;
-  color: #757474;
-  text-decoration: none;
-}
+  .above-line-text {
+    color: #757474;
+  }
 
-.link-child:hover {
-  transition: color 0.45s ease;
-  color: #9ED29D;
-}
+  .link-parent {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+  }
 
-.about-text {
-  margin-left: auto;
-  margin-right: auto;
-  color: #757474;
-  word-wrap: break-word;
-  width: 40vw;
-  text-align: center;
-}
+  .link-child {
+    margin: 1vw;
+    color: #757474;
+    text-decoration: none;
+  }
 
-#line {
-  border: 0.75px solid #9ED29D;
-  width: 50vw
-}
+  .link-child:hover {
+    transition: color 0.45s ease;
+    color: #9ED29D;
+  }
 
-#name-text {
-  color: #9ED29D;
-}
+  .about-text {
+    margin-left: auto;
+    margin-right: auto;
+    color: #757474;
+    word-wrap: break-word;
+    width: 40vw;
+    text-align: center;
+  }
 
-h1 {
-  padding-bottom: 2vw
+  #line {
+    border: 0.75px solid #9ED29D;
+    width: 50vw;
+  }
+
+  #name-text {
+    color: #9ED29D;
+  }
+
+  h1 {
+    padding-bottom: 2vw;
+  }
 }

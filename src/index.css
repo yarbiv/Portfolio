@@ -12,7 +12,7 @@ body {
 .center {
   text-align: center;
   width: 100vw;
-  height: 42vw;
+  height: 75vh;
 
   position:absolute;
   left: 0;
@@ -42,6 +42,15 @@ body {
 .link-child:hover {
   transition: color 0.45s ease;
   color: #9ED29D;
+}
+
+.about-text {
+  margin-left: auto;
+  margin-right: auto;
+  color: #757474;
+  word-wrap: break-word;
+  width: 40vw;
+  text-align: center;
 }
 
 #line {

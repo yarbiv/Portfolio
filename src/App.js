@@ -14,7 +14,7 @@ function NoMatch() {
 
 function App() {
   return (
-    <div class='center'>
+    <div className='center'>
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/" exact component={Home} />

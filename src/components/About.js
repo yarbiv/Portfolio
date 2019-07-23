@@ -12,7 +12,6 @@ export default class About extends React.Component {
     LastFm()
       .then(res => {
         this.setState({ loading: false, albums: res.body.topalbums })
-        console.log(res.body.topalbums);
       });
   }
 
@@ -34,9 +33,7 @@ export default class About extends React.Component {
     return (
       <div>
         <h1>About Me</h1>
-        <p className='about-text'>
-          {aboutMe}
-        </p>
+        {aboutMe}
         <Nav/>
       </div>
     )

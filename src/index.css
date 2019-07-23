@@ -57,6 +57,16 @@
     font-size: 4vw;
   }
 
+  a.about-text: {
+    color: #757474;
+    text-decoration: none;
+  }
+
+  a.about-text:hover {
+    transition: color 0.45s ease;
+    color: #9ED29D;
+  }
+
   #line {
     border: 0.75px solid #9ED29D;
     width: 90vw;
@@ -125,6 +135,16 @@
     word-wrap: break-word;
     width: 40vw;
     text-align: center;
+  }
+
+  a.about-text: {
+    color: #757474;
+    text-decoration: none;
+  }
+
+  a.about-text:hover {
+    transition: color 0.45s ease;
+    color: #9ED29D;
   }
 
   #line {

@@ -12,26 +12,30 @@ export default class About extends React.Component {
     LastFm()
       .then(res => {
         this.setState({ loading: false, albums: res.body.topalbums })
+        console.log(res.body.topalbums);
       });
   }
 
   render() {
-    let albumString;
+    let weeklyAlbums;
     if (!this.state.loading) {
       const album = this.state.albums.album;
-      albumString = `This week I've been listening to "${album[0].name}" by "${album[0].artist.name}", "${album[1].name}"
-                      by "${album[1].artist.name}", and "${album[2].name}" by "${album[2].artist.name}".`;
+      weeklyAlbums = <p>
+                      This week I've been listening to <a className='about-text' href={album[0].url}>{album[0].name} by {album[0].artist.name}</a>, <a className='about-text' href={album[1].url}>{album[1].name} by {album[1].artist.name}</a>, and <a className='about-text' href={album[2].url}>{album[2].name} by {album[2].artist.name}</a>.
+                     </p>;
     }
-    const aboutString = this.state.loading ? "" : `I'm a fun guy. Obviously I love the game of basketball. It's
-                                                  just more questions you gotta ask me for me to tell you about myself,
-                                                  I can't just give you a whole spiel like that. I can't even see where
-                                                  you're sitting at, haha. I love listening to music! ${albumString}`;
-    console.log(this.state.albums)
+    const aboutMe = this.state.loading ? "" : <p className='about-text'>
+                                                  I'm a software developer and a student at the University of Waterloo.
+                                                  In the past, I've worked at D2L and North, among other companies.
+                                                  Some of my passions include politics, basketball (huge Raptors fan!),
+                                                  and music. {weeklyAlbums} You can find my resume and GitHub below, and
+                                                  feel free to get in touch with me via email or LinkedIn!
+                                              </p>;
     return (
       <div>
         <h1>About Me</h1>
         <p className='about-text'>
-          {aboutString}
+          {aboutMe}
         </p>
         <Nav/>
       </div>

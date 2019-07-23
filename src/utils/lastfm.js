@@ -8,5 +8,5 @@ export default function getLastFmData() {
     .query({period: '7day'})
     .query({limit: '3'})
     .query({format: 'json'})
-    .query({api_key: '418695c438a06ba1edd16c5286b627b2'});
+    .query({api_key: process.env.REACT_APP_LASTFM_KEY});
 }

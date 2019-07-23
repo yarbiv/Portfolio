@@ -26,13 +26,13 @@ export default class About extends React.Component {
     const aboutMe = this.state.loading ? "" : <p className='about-text'>
                                                   I'm a software developer and a student at the University of Waterloo.
                                                   In the past, I've worked at D2L and North, among other companies.
-                                                  Some of my passions include politics, basketball (huge Raptors fan!),
-                                                  and music. {weeklyAlbums} You can find my resume and GitHub below, and
+                                                  Some of my passions include politics, basketball (I'm a huge Raptors fan!),
+                                                  and listening to music. {weeklyAlbums} You can find my resume and GitHub below, and
                                                   feel free to get in touch with me via email or LinkedIn!
                                               </p>;
     return (
       <div>
-        <h1>About Me</h1>
+        <h1>About <span id='name-text'>Me</span></h1>
         {aboutMe}
         <Nav/>
       </div>

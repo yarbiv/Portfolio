@@ -24,6 +24,11 @@
     overflow:auto;
   }
 
+  h1 {
+    padding-bottom: 2vw;
+    font-size: 12vw;
+  }
+
   .above-line-text {
     color: #757474;
     font-size: 4vw;
@@ -75,11 +80,6 @@
   #name-text {
     color: #9ED29D;
   }
-
-  h1 {
-    padding-bottom: 2vw;
-    font-size: 9vw;
-  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -107,8 +107,14 @@
     overflow:auto;
   }
 
+  h1 {
+    padding-bottom: 2vw;
+    font-size: 4vw;
+  }
+
   .above-line-text {
     color: #757474;
+    font-size: 1.15vw;
   }
 
   .link-parent {
@@ -154,9 +160,5 @@
 
   #name-text {
     color: #9ED29D;
-  }
-
-  h1 {
-    padding-bottom: 2vw;
   }
 }

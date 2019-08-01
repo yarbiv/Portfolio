@@ -14,14 +14,16 @@ function NoMatch() {
 
 function App() {
   return (
-    <div className='center'>
-      <Router basename={process.env.PUBLIC_URL}>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
-          <Route component={NoMatch} />
-        </Switch>
-      </Router>
+    <div className='parent'>
+      <div className='center'>
+        <Router basename={process.env.PUBLIC_URL}>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/about" component={About} />
+            <Route component={NoMatch} />
+          </Switch>
+        </Router>
+      </div>
     </div>
   );
 }

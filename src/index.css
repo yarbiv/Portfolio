@@ -11,15 +11,23 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+
   .center {
     text-align: center;
-    width: 100vw;
-    height: 75vh;
+    /* width: 100vw;
+    height: 100vh; */
 
-    position:absolute;
-    left: 0;
+    /* position:absolute; */
+    /* left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 0; */
 
     overflow:auto;
   }

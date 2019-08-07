@@ -11,16 +11,16 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  .center {
-    text-align: center;
+  .parent {
+    display: flex;
+    align-items: center;
     width: 100vw;
-    height: 75vh;
+    height: 100vh;
+  }
 
-    position:absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
+  .center {
+    margin: auto;
+    text-align: center;
     overflow:auto;
   }
 
@@ -31,7 +31,6 @@
 
   .above-line-text {
     color: #757474;
-    font-size: 4vw;
   }
 
   .link-parent {

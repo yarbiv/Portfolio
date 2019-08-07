@@ -19,27 +19,24 @@ export default class About extends React.Component {
     let weeklyAlbums;
     if (!this.state.loading) {
       const album = this.state.albums.album;
-      weeklyAlbums = <p>
+      weeklyAlbums = <p className='about-text'>
                       This week I've been listening to <a className='about-text' href={album[0].url}>{album[0].name} by {album[0].artist.name}</a>, <a className='about-text' href={album[1].url}>{album[1].name} by {album[1].artist.name}</a>, and <a className='about-text' href={album[2].url}>{album[2].name} by {album[2].artist.name}</a>.
                      </p>;
     }
-    const aboutMe = this.state.loading ? <p className='about-text'>
-                                                  I'm a software developer and a student at the University of Waterloo.
-                                                  In the past, I've worked at D2L and North, among other companies.
-                                                  Some of my passions include reading, basketball (I'm a huge Raptors fan!),
-                                                  and listening to music. {weeklyAlbums} You can find my resume and GitHub below, and
-                                                  feel free to get in touch with me via email or LinkedIn!
-                                              </p> : <p className='about-text'>
-                                                  I'm a software developer and a student at the University of Waterloo.
-                                                  In the past, I've worked at D2L and North, among other companies.
-                                                  Some of my passions include reading, basketball (I'm a huge Raptors fan!),
-                                                  and listening to music. {weeklyAlbums} You can find my resume and GitHub below, and
-                                                  feel free to get in touch with me via email or LinkedIn!
-                                              </p>;
     return (
       <div>
         <h1>About <span id='name-text'>Me</span></h1>
-        {aboutMe}
+        <p className='about-text'>
+          I'm a software developer and a student at the University of Waterloo.
+          In the past, I've worked at D2L and North, among other companies.
+          Some of my passions include reading, basketball (I'm a huge Raptors fan!),
+          and listening to music.
+        </p>
+        {weeklyAlbums}
+        <p className='about-text'>
+          You can find my resume and GitHub below, and
+          feel free to get in touch with me via email or LinkedIn!
+        </p>
         <Nav/>
       </div>
     )

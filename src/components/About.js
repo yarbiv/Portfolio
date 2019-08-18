@@ -1,4 +1,5 @@
-import Nav from './Nav.js'
+import Album from './Album.js';
+import Nav from './Nav.js';
 import React from 'react';
 import LastFm from '../utils/lastfm.js';
 
@@ -17,10 +18,10 @@ export default class About extends React.Component {
 
   render() {
     let weeklyAlbums;
-    if (!this.state.loading) {
+    if (!this.state.loading && this.state.albums) {
       const album = this.state.albums.album;
       weeklyAlbums = <p className='about-text'>
-                      This week I've been listening to <a className='about-text' href={album[0].url}>{album[0].name} by {album[0].artist.name}</a>, <a className='about-text' href={album[1].url}>{album[1].name} by {album[1].artist.name}</a>, and <a className='about-text' href={album[2].url}>{album[2].name} by {album[2].artist.name}</a>.
+                      This week I've been listening to <Album album={album[0]}/>, <Album album={album[1]}/>, and <Album album={album[2]}/>.
                      </p>;
     }
     return (

@@ -19,9 +19,9 @@ export default class About extends React.Component {
   render() {
     let weeklyAlbums;
     if (!this.state.loading && this.state.albums) {
-      const album = this.state.albums.album;
+      const albums = this.state.albums.album;
       weeklyAlbums = <p className='about-text'>
-                      This week I've been listening to <Album album={album[0]}/>, <Album album={album[1]}/>, and <Album album={album[2]}/>.
+                      This week I've been listening to <Album album={albums[0]}/>, <Album album={albums[1]}/>, and <Album album={albums[2]}/>.
                      </p>;
     }
     return (

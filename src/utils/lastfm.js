@@ -2,7 +2,7 @@ const superagent = require('superagent');
 
 export default function getLastFmData() {
   return superagent
-    .get('http://ws.audioscrobbler.com/2.0/')
+    .get('https://ws.audioscrobbler.com/2.0/')
     .query({method: 'user.gettopalbums'})
     .query({user: 'yoavarbiv'})
     .query({period: '7day'})

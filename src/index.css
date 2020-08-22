@@ -47,7 +47,7 @@
   }
 
   .link-child:hover {
-    transition: color 0.45s ease;
+    transition: color 0.45s ease-in-out;
     color: #9ED29D;
   }
 
@@ -64,10 +64,11 @@
   a.about-text: {
     color: #757474;
     text-decoration: none;
+    transition: color 0.45s ease-in-out;
   }
 
   a.about-text:hover {
-    transition: color 0.45s ease;
+    transition: color 0.45s ease-in-out;
     color: #9ED29D;
   }
 
@@ -126,10 +127,11 @@
     margin: 1vw;
     color: #757474;
     text-decoration: none;
+    transition: color 0.45s ease-in-out;
   }
 
   .link-child:hover {
-    transition: color 0.45s ease;
+    transition: color 0.45s ease-in-out;
     color: #9ED29D;
   }
 
@@ -140,6 +142,7 @@
     word-wrap: break-word;
     width: 40vw;
     text-align: center;
+    transition: color 0.45s ease-in-out;
   }
 
   a.about-text: {
@@ -148,7 +151,7 @@
   }
 
   a.about-text:hover {
-    transition: color 0.45s ease;
+    transition: color 0.45s ease-in-out;
     color: #9ED29D;
   }
 

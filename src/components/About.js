@@ -28,9 +28,12 @@ export default class About extends React.Component {
       <div>
         <h1>About <span id='name-text'>Me</span></h1>
         <p className='about-text'>
-          I'm a co-op student at the University of Waterloo.
-          In the past, I've worked at Intel, A Thinking Ape, and D2L, among other companies.
-          Some of my passions include skating, basketball (I'm a huge Raptors fan),
+        I'm currently working at ByteDance as a backend developer in livestreaming infrastructure, developing microservices at massive scale.
+        </p>
+        <p className='about-text'>
+          I graduated from the University of Waterloo in 2022 and
+          in the past, I've worked at Intel, A Thinking Ape, and D2L, among other companies.
+          Some of my passions include cooking, film, basketball (I'm a huge Raptors fan),
           and music. Check out my <a className='about-text' href={"https://www.discogs.com/user/yoav.arbiv/collection"}>vinyl collection!</a>
         </p>
         {weeklyAlbums}

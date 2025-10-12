@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './TetrisGrid.css';
 
 const CELL_SIZE = 25;
@@ -115,6 +115,8 @@ for (const [block, count] of Object.entries(blockCountsByType)) {
 }
 
 function TetrisGrid() {
+  const [useColorHints, setUseColorHints] = useState(false);
+
   const [blocks, setBlocks] = useState(initialBlocks);
   const dragBlock = useRef(null);
   
@@ -259,11 +261,78 @@ function TetrisGrid() {
   );
 };
 
+function buildBlockGrid(blocks, width, height, cellSize) {
+  const grid = Array.from({ length: height }, () =>
+    Array(width).fill(null)
+  );
+
+  for (const block of blocks) {
+    const startX = Math.round(block.x / cellSize);
+    const startY = Math.round(block.y / cellSize);
+
+    block.shape.forEach((row, y) =>
+      row.forEach((cell, x) => {
+        if (cell) {
+          const gridX = startX + x;
+          const gridY = startY + y;
+          if (
+            gridY >= 0 && gridY < height &&
+            gridX >= 0 && gridX < width
+          ) {
+            grid[gridY][gridX] = true;
+          }
+        }
+      })
+    );
+  }
+
+  return grid;
+}
+
+
+function isPuzzleSolved(hintGrid, blockGrid) {
+  const height = hintGrid.length;
+  const width = hintGrid[0].length;
+
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const hint = hintGrid[y][x];
+      const placed = blockGrid[y][x];
+
+      if (hint && !placed) {
+        return false
+      }
+      if (placed && hint == null) {
+        return false
+      }
+    }
+  }
+
+  return true;
+} 
+
+  const [puzzleSolved, setPuzzleSolved] = useState(false);
+
+  useEffect(() => {
+    const blockGrid = buildBlockGrid(blocks, GRID_WIDTH, GRID_HEIGHT, CELL_SIZE);
+    const solved = isPuzzleSolved(PUZZLE_HINTS, blockGrid);
+    setPuzzleSolved(solved);
+  }, [blocks]);
+
+
 
   const handleTapRotate = (blockId) => {
   setBlocks(prev => {
     const current = prev.find(b => b.id === blockId);
     if (!current) return prev;
+
+    const samePositionBlocks = prev.filter(
+      b => b.x === current.x && b.y === current.y
+    );
+
+    if (samePositionBlocks.length > 1) {
+      return prev;
+    }
 
     const rotatedShape = rotateMatrixClockwise(current.shape);
 
@@ -313,6 +382,19 @@ for (const block of blocks) {
       }}
       onTouchEnd={handleMouseUp}
     >
+  {puzzleSolved ? <p>Congrats!</p> : null}
+      
+      <button
+  onClick={() => setUseColorHints(prev => !prev)}
+  style={{
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    zIndex: 1000
+  }}
+>
+  {useColorHints ? 'Hide Hint Colors' : 'Show Hint Colors'}
+</button>
       <div
         className="tetris-grid"
         style={{
@@ -320,25 +402,38 @@ for (const block of blocks) {
           height: GRID_HEIGHT * CELL_SIZE,
         }}
       >
-        <div className="tetris-hint-layer">
+<div className="tetris-hint-layer">
   {PUZZLE_HINTS.map((row, y) =>
     row.map((cell, x) => {
       if (!cell) return null;
+
+      const baseStyle = {
+        left: x * CELL_SIZE,
+        top: y * CELL_SIZE,
+        opacity: 0.25
+      };
+
+      const colorStyle = useColorHints
+        ? { backgroundColor: blockColor[cell] }
+        : {
+            backgroundColor: 'grey',
+            border: '1px dashed rgba(255,255,255,0.2)'
+          };
+
       return (
         <div
           key={`hint-${x}-${y}`}
           className="grid-hint-cell"
           style={{
-            left: x * CELL_SIZE,
-            top: y * CELL_SIZE,
-            backgroundColor: blockColor[cell], // Use the same colors as actual blocks
-            opacity: 0.2 // light/faded
+            ...baseStyle,
+            ...colorStyle
           }}
         />
       );
     })
   )}
 </div>
+
 
         {/* Grid lines (optional) */}
         {[...Array(GRID_HEIGHT)].map((_, y) => [...Array(GRID_WIDTH)].map((_, x) => (

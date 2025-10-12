@@ -44,19 +44,19 @@ const PUZZLE_HINTS = [
   [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
   [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
   [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, "L" , "L" , "T" , null, null, null, "T" , "T" , "T" , null, null, null],
+  [null, null, "O" , "O" , "L" , "T" , "T" , null, "L" , "J" , "T" , "Z" , "Z" , null, null],
+  [null, "T" , "O" , "O" , "L" , "T" , "L" , "L" , "L" , "J" , "J" , "J" , "Z" , "Z" , null],
+  [null, "T" , "T" , "J" , "J" , "Z" , "J" , "I" , "I" , "I" , "I" , "L" , "L" , "L" , null],
+  [null, "T" , "L" , "J" , "Z" , "Z" , "J" , "J" , "J" , "Z" , "Z" , "L" , "J" , "J" , null],
+  [null, null, "L" , "J" , "Z" , "O" , "O" , "L" , "L" , "L" , "Z" , "Z" , "J" , null, null],
+  [null, null, "L" , "L" , "T" , "O" , "O" , "L" , "I" , "I" , "I" , "I" , "J" , null, null],
+  [null, null, null, "T" , "T" , "T" , "S" , "S" , "J" , "J" , "S" , "S" , null, null, null],
+  [null, null, null, null, null, "S" , "S" , "T" , "J" , "S" , "S" , null, null, null, null],
+  [null, null, null, null, null, null, "T" , "T" , "J" , null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, "T" , null, null, null, null, null, null, null],        
   [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
   [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],        
 ];
 
 
@@ -71,30 +71,34 @@ const blockColor = {
 };
 
 
-// Heart needs 
-
-// 3 s pieces
-// 3 z pieces
-// 5 t pieces 
-
 const blockCountsByType = {
   I: 2,
   O: 2,
   T: 5,
   L: 5,
-  J: 4,
+  J: 5,
   S: 2,
   Z: 3
+}
+
+const startingXPosByType = {
+  I: 0,
+  O: 1,
+  T: 5,
+  L: 4,
+  J: 9,
+  S: 12,
+  Z: 12
 }
 
 const startingYPosByType = {
   I: 0,
   O: 2,
-  T: 5,
-  L: 7,
-  J: 10,
-  S: 13,
-  Z: 15
+  T: 1,
+  L: 3,
+  J: 1,
+  S: 4,
+  Z: 1
 }
 
 const initialBlocks = []
@@ -104,93 +108,11 @@ for (const [block, count] of Object.entries(blockCountsByType)) {
     initialBlocks.push({
       id: `${block}${i}`,
       shape: TETROMINOES[block],
-      x: 1*CELL_SIZE,
+      x: startingXPosByType[block]*CELL_SIZE,
       y: startingYPosByType[block]*CELL_SIZE
     })
   }
 }
-
-// Generate initial blocks with position
-// const initialBlocks = [
-//   // Top two O blocks
-//   {
-//     id: 'O1',
-//     shape: TETROMINOES.O,
-//     x: 2 * CELL_SIZE,
-//     y: 0 * CELL_SIZE,
-//   },
-//   {
-//     id: 'O2',
-//     shape: TETROMINOES.O,
-//     x: 6 * CELL_SIZE,
-//     y: 0 * CELL_SIZE,
-//   },
-
-//   // T blocks in center row
-//   {
-//     id: 'T1',
-//     shape: TETROMINOES.T,
-//     x: 3 * CELL_SIZE,
-//     y: 3 * CELL_SIZE,
-//   },
-
-
-//   // T blocks in center row
-//   {
-//     id: 'T2',
-//     shape: TETROMINOES.T,
-//     x: 4 * CELL_SIZE,
-//     y: 4 * CELL_SIZE,
-//   },
-
-//   // Lower left S and lower right Z
-//   {
-//     id: 'S1',
-//     shape: TETROMINOES.S,
-//     x: 2 * CELL_SIZE,
-//     y: 5 * CELL_SIZE,
-//   },
-//   {
-//     id: 'Z1',
-//     shape: TETROMINOES.Z,
-//     x: 5 * CELL_SIZE,
-//     y: 5 * CELL_SIZE,
-//   },
-
-//     {
-//     id: 'S2',
-//     shape: TETROMINOES.S,
-//     x: 2 * CELL_SIZE,
-//     y: 5 * CELL_SIZE,
-//   },
-//   {
-//     id: 'Z2',
-//     shape: TETROMINOES.Z,
-//     x: 5 * CELL_SIZE,
-//     y: 5 * CELL_SIZE,
-//   },
-
-//   // Bottom stem I block
-//   {
-//     id: 'I1',
-//     shape: TETROMINOES.I,
-//     x: 4 * CELL_SIZE,
-//     y: 7 * CELL_SIZE,
-//   },
-//     {
-//     id: 'I2',
-//     shape: TETROMINOES.I,
-//     x: 4 * CELL_SIZE,
-//     y: 7 * CELL_SIZE,
-//   },
-//     {
-//     id: 'I3',
-//     shape: TETROMINOES.I,
-//     x: 4 * CELL_SIZE,
-//     y: 7 * CELL_SIZE,
-//   },
-// ];
-
 
 function TetrisGrid() {
   const [blocks, setBlocks] = useState(initialBlocks);

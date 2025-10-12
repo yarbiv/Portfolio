@@ -62,8 +62,8 @@
 
 .grid-hint-cell {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   border: 1px dashed rgba(255, 255, 255, 0.2); /* optional */
   border-radius: 4px;
 }

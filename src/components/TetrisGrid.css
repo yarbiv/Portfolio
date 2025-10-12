@@ -1,0 +1,35 @@
+.tetris-container {
+  user-select: none;
+  position: relative;
+}
+
+.tetris-grid {
+  position: relative;
+  background-color: #111;
+  border: 2px solid #444;
+}
+
+.grid-cell {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #222;
+}
+
+.tetris-block {
+  position: absolute;
+  cursor: grab;
+}
+
+.block-cell {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #0ff;
+  border: 1px solid #0cc;
+}
+
+.tetris-container {
+  touch-action: none;
+}

@@ -1,4 +1,10 @@
 .tetris-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   user-select: none;
   position: relative;
 }
@@ -11,8 +17,8 @@
 
 .grid-cell {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   box-sizing: border-box;
   border: 1px solid #222;
 }
@@ -24,9 +30,8 @@
 
 .block-cell {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  background-color: #0ff;
+  width: 25px;
+  height: 25px;
   border: 1px solid #0cc;
 }
 

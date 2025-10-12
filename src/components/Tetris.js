@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import './TetrisGrid.css';
 
-const CELL_SIZE = 40;
-const GRID_WIDTH = 10;
+const CELL_SIZE = 25;
+const GRID_WIDTH = 15;
 const GRID_HEIGHT = 20;
 
 // Define Tetris block shapes
@@ -10,26 +10,158 @@ const TETROMINOES = {
   I: [[1, 1, 1, 1]],
   O: [
     [1, 1],
-    [1, 1],
+    [1, 1]
   ],
   L: [
     [1, 0],
     [1, 0],
-    [1, 1],
+    [1, 1]
   ],
+  J: [
+    [0, 1],
+    [0, 1],
+    [1, 1]
+  ],
+  S: [
+    [0, 1, 1],
+    [1, 1, 0]
+  ],
+  Z: [
+    [1, 1, 0],
+    [0, 1, 1]
+  ],
+  T: [
+    [1, 1, 1],
+    [0, 1, 0]
+  ]
 };
 
+const blockColor = {
+  I: 'cyan',
+  O: 'yellow',
+  T: 'purple',
+  L: 'orange',
+  J: 'blue',
+  S: 'green',
+  Z: 'red'
+};
+
+
+// Heart needs 
+
+// 3 s pieces
+// 3 z pieces
+// 5 t pieces 
+
+const blockCountsByType = {
+  I: 2,
+  O: 2,
+  T: 5,
+  L: 5,
+  J: 4,
+  S: 2,
+  Z: 3
+}
+
+const initialBlocks = []
+
+for (const [block, count] of Object.entries(blockCountsByType)) {
+  for (let i = 0; i < count; i += 1) {
+    initialBlocks.push({
+      id: `${block}${i}`,
+      shape: TETROMINOES[block],
+      x: 1*CELL_SIZE,
+      y: 1*CELL_SIZE
+    })
+  }
+}
+
 // Generate initial blocks with position
-const initialBlocks = Object.entries(TETROMINOES).map(([name, shape], idx) => ({
-  id: name,
-  shape,
-  x: 0,
-  y: idx * 100, // offset so they don't overlap
-}));
+// const initialBlocks = [
+//   // Top two O blocks
+//   {
+//     id: 'O1',
+//     shape: TETROMINOES.O,
+//     x: 2 * CELL_SIZE,
+//     y: 0 * CELL_SIZE,
+//   },
+//   {
+//     id: 'O2',
+//     shape: TETROMINOES.O,
+//     x: 6 * CELL_SIZE,
+//     y: 0 * CELL_SIZE,
+//   },
+
+//   // T blocks in center row
+//   {
+//     id: 'T1',
+//     shape: TETROMINOES.T,
+//     x: 3 * CELL_SIZE,
+//     y: 3 * CELL_SIZE,
+//   },
+
+
+//   // T blocks in center row
+//   {
+//     id: 'T2',
+//     shape: TETROMINOES.T,
+//     x: 4 * CELL_SIZE,
+//     y: 4 * CELL_SIZE,
+//   },
+
+//   // Lower left S and lower right Z
+//   {
+//     id: 'S1',
+//     shape: TETROMINOES.S,
+//     x: 2 * CELL_SIZE,
+//     y: 5 * CELL_SIZE,
+//   },
+//   {
+//     id: 'Z1',
+//     shape: TETROMINOES.Z,
+//     x: 5 * CELL_SIZE,
+//     y: 5 * CELL_SIZE,
+//   },
+
+//     {
+//     id: 'S2',
+//     shape: TETROMINOES.S,
+//     x: 2 * CELL_SIZE,
+//     y: 5 * CELL_SIZE,
+//   },
+//   {
+//     id: 'Z2',
+//     shape: TETROMINOES.Z,
+//     x: 5 * CELL_SIZE,
+//     y: 5 * CELL_SIZE,
+//   },
+
+//   // Bottom stem I block
+//   {
+//     id: 'I1',
+//     shape: TETROMINOES.I,
+//     x: 4 * CELL_SIZE,
+//     y: 7 * CELL_SIZE,
+//   },
+//     {
+//     id: 'I2',
+//     shape: TETROMINOES.I,
+//     x: 4 * CELL_SIZE,
+//     y: 7 * CELL_SIZE,
+//   },
+//     {
+//     id: 'I3',
+//     shape: TETROMINOES.I,
+//     x: 4 * CELL_SIZE,
+//     y: 7 * CELL_SIZE,
+//   },
+// ];
+
 
 function TetrisGrid() {
   const [blocks, setBlocks] = useState(initialBlocks);
   const dragBlock = useRef(null);
+  
   const offset = useRef({ x: 0, y: 0 });
 
   const getOccupiedCells = (blocks) => {
@@ -133,6 +265,7 @@ function TetrisGrid() {
     if (filtered.length !== 1) return;
 
     const current = filtered[0];
+    console.log(current)
 
     // Calculate snapped position first
     const initialX = Math.round(current.x / CELL_SIZE) * CELL_SIZE;
@@ -163,6 +296,40 @@ function TetrisGrid() {
     // Null the drag reference after
     dragBlock.current = null;
   };
+
+  const rotateMatrixClockwise = (matrix) => {
+  return matrix[0].map((_, colIndex) =>
+    matrix.map(row => row[colIndex]).reverse()
+  );
+};
+
+
+  const handleTapRotate = (blockId) => {
+  setBlocks(prev => {
+    const current = prev.find(b => b.id === blockId);
+    if (!current) return prev;
+
+    const rotatedShape = rotateMatrixClockwise(current.shape);
+
+    const occupied = getOccupiedCells(prev.filter(b => b.id !== blockId));
+
+    const isValid = isPositionValid(
+      { ...current, shape: rotatedShape },
+      current.x,
+      current.y,
+      occupied
+    );
+
+    if (!isValid) return prev; // ❌ cancel rotation
+
+    return prev.map(b =>
+      b.id === blockId
+        ? { ...b, shape: rotatedShape }
+        : b
+    );
+  });
+};
+
 
   return (
     <div
@@ -202,10 +369,17 @@ function TetrisGrid() {
         {/* Render draggable blocks */}
         {blocks.map((block) => (
           <div
-            key={block.id}
+            key={`${block.id}-${block.shape.length}-${block.shape[0].length}`}
             className="tetris-block"
             style={{
               transform: `translate(${block.x}px, ${block.y}px)`,
+            }}
+            onClick={() => handleTapRotate(block.id)}
+            onTouchEnd={(e) => {
+              // Only rotate if it's a short tap (not a drag)
+              if (!dragBlock.current) {
+                handleTapRotate(block.id);
+              }
             }}
             onMouseDown={(e) => {
               e.preventDefault();
@@ -219,11 +393,12 @@ function TetrisGrid() {
           >
             {block.shape.map((row, y) => row.map((cell, x) => (cell ? (
               <div
-                key={`${x}-${y}`}
+                key={`${block.id}-${x}-${y}`}
                 className="block-cell"
                 style={{
                   left: x * CELL_SIZE,
                   top: y * CELL_SIZE,
+                  background: blockColor[block.id[0] || 'T']
                 }}
               />
             ) : null)))}

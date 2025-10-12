@@ -36,6 +36,30 @@ const TETROMINOES = {
   ]
 };
 
+const PUZZLE_HINTS = [
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],        
+];
+
+
 const blockColor = {
   I: 'cyan',
   O: 'yellow',
@@ -63,6 +87,16 @@ const blockCountsByType = {
   Z: 3
 }
 
+const startingYPosByType = {
+  I: 0,
+  O: 2,
+  T: 5,
+  L: 7,
+  J: 10,
+  S: 13,
+  Z: 15
+}
+
 const initialBlocks = []
 
 for (const [block, count] of Object.entries(blockCountsByType)) {
@@ -71,7 +105,7 @@ for (const [block, count] of Object.entries(blockCountsByType)) {
       id: `${block}${i}`,
       shape: TETROMINOES[block],
       x: 1*CELL_SIZE,
-      y: 1*CELL_SIZE
+      y: startingYPosByType[block]*CELL_SIZE
     })
   }
 }
@@ -330,6 +364,16 @@ function TetrisGrid() {
   });
 };
 
+const blockPositions = {};
+
+for (const block of blocks) {
+  const key = `${block.x},${block.y}`;
+  if (!blockPositions[key]) {
+    blockPositions[key] = [];
+  }
+  blockPositions[key].push(block);
+}
+
 
   return (
     <div
@@ -354,6 +398,26 @@ function TetrisGrid() {
           height: GRID_HEIGHT * CELL_SIZE,
         }}
       >
+        <div className="tetris-hint-layer">
+  {PUZZLE_HINTS.map((row, y) =>
+    row.map((cell, x) => {
+      if (!cell) return null;
+      return (
+        <div
+          key={`hint-${x}-${y}`}
+          className="grid-hint-cell"
+          style={{
+            left: x * CELL_SIZE,
+            top: y * CELL_SIZE,
+            backgroundColor: blockColor[cell], // Use the same colors as actual blocks
+            opacity: 0.2 // light/faded
+          }}
+        />
+      );
+    })
+  )}
+</div>
+
         {/* Grid lines (optional) */}
         {[...Array(GRID_HEIGHT)].map((_, y) => [...Array(GRID_WIDTH)].map((_, x) => (
           <div
@@ -367,8 +431,11 @@ function TetrisGrid() {
         )))}
 
         {/* Render draggable blocks */}
-        {blocks.map((block) => (
-          <div
+        {blocks.map((block) => {
+            const key = `${block.x},${block.y}`;
+  const stackCount = blockPositions[key]?.length || 0;
+  const showCount = stackCount > 1;
+          return (<div
             key={`${block.id}-${block.shape.length}-${block.shape[0].length}`}
             className="tetris-block"
             style={{
@@ -402,8 +469,14 @@ function TetrisGrid() {
                 }}
               />
             ) : null)))}
-          </div>
-        ))}
+            {/* Count bubble */}
+      {showCount && (
+        <div className="block-count-bubble">
+          ×{stackCount}
+        </div>
+      )}
+          </div>)
+})}
       </div>
     </div>
   );

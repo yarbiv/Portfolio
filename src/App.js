@@ -16,11 +16,11 @@ function NoMatch() {
 function ScavengerLandingPage() {
   return (
     <div>
-      <h2>I hope you're enjoying that chai :)</h2>
+      <h2>Hey! I hope you're enjoying that chai :)</h2>
       <h2>I have a bunch of today's hints set up on this website.</h2>
       <h2>For the rest of the day, unless I say otherwise, the code hints will be URLs on the website like this one.</h2>
       <h2>Here, let's do this first one together.</h2>
-      <h2>The next hint is the first letter of each sentence :)</h2>
+      <h2>The next hint is the first letter of each sentence here, plus the digits of our anniversary (mmdd)</h2>
     </div>
   )
 } 
@@ -69,6 +69,27 @@ function ExploratoriumHint() {
   );
 }
 
+function ChurchOfEightWheelsHint() {
+  return (
+    <div>
+      <img style={{width: '80vw'}} src='IMG_1736.jpeg' alt=''/>
+      <h2>We go to church, but never in prayer</h2>
+      <h2>I fall here often – did someone pull out my chair?</h2>
+      <h2>Watching you fly by, you're a regular athlete</h2>
+      <h2>But if we need a twenty, what's the name of the place across the street?</h2>
+    </div>
+  )
+}
+
+function UnclePaulHint() {
+  return (
+    <div>
+      <img style={{width: '80vw'}} src='IMG_9980.jpeg' alt=''/>
+      <h2></h2>
+    </div>
+  )
+}
+
 function App() {
   return (
     <div className='parent'>
@@ -77,12 +98,14 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
-            <Route path="/scavenger" component={ScavengerLandingPage} />
-            <Route path="/iifht" component={PennsylvaniaStreetFlowerBushHint} />
+            <Route path="/yowza" component={ScavengerLandingPage} />
+            <Route path="/hiifht0726" component={PennsylvaniaStreetFlowerBushHint} />
             <Route path="/stagecoachgreens" component={GiantsHint} />
             <Route path="/302-2992-10881-2062-3283-523-140-660-1903-1464-1526-387-557" component={HarbourCourtHint} />
             <Route path="/explore" component={ExploratoriumHint} />
             <Route path="/tetris" component={TetrisGrid} />
+            <Route path="/post-tetris-lifestyle" component={ChurchOfEightWheelsHint} />
+            <Route path="/keyfoodmarket" component={UnclePaulHint} />
             <Route component={NoMatch} />
           </Switch>
         </Router>

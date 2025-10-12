@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './TetrisGrid.css';
+import './LinkWrapper'
+import LinkWrapper from './LinkWrapper';
 
 const CELL_SIZE = 25;
 const GRID_WIDTH = 15;
@@ -395,7 +397,7 @@ for (const block of blocks) {
 >
   {useColorHints ? 'Hide Hint Colors' : 'Show Hint Colors'}
 </button>
-      <button
+      {/* <button
   onClick={() => setPuzzleSolved(prev => !prev)}
   style={{
     position: 'absolute',
@@ -405,7 +407,7 @@ for (const block of blocks) {
   }}
 >
   {useColorHints ? 'Set unsolved' : 'Set solved'}
-</button>
+</button> */}
       <div
         className={`tetris-grid ${puzzleSolved ? '' : ''}`}
         style={{
@@ -415,7 +417,7 @@ for (const block of blocks) {
       >
         {puzzleSolved && (
   <div className="puzzle-solved-message">
-    wow, you're pretty good! TODO: point to the next clue
+  <LinkWrapper routerLink="/post-tetris-lifestyle">wow, you're pretty good! click here for your next hint :)</LinkWrapper>
   </div>
 )}
 <div className={`tetris-hint-layer ${puzzleSolved ? 'solved' : ''}`}>

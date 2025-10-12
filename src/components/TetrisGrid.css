@@ -60,10 +60,66 @@
   z-index: 0; /* below blocks */
 }
 
+.tetris-hint-layer.solved {
+  animation: fadeToPink 1.2s forwards, heartBounce 1.8s ease;
+  z-index: 100; /* above blocks */
+}
+
 .grid-hint-cell {
   position: absolute;
   width: 25px;
   height: 25px;
   border: 1px dashed rgba(255, 255, 255, 0.2); /* optional */
   border-radius: 4px;
+}
+
+/* .tetris-grid.solved .grid-hint-cell {
+  animation: fadeToPink 1.2s forwards;
+} */
+
+@keyframes fadeToPink {
+  0% {
+    background-color: rgba(255, 255, 255, 0.2) ; /* starting faded color */
+  }
+  100% {
+    background-color: hotpink;
+    opacity: 1.0;
+  }
+}
+
+@keyframes heartBounce {
+  0%   { transform: scale(1) translateY(0); }
+  30%  { transform: scale(1.1, 0.9) translateY(-4px); }
+  50%  { transform: scale(0.95, 1.05) translateY(2px); }
+  70%  { transform: scale(1.05, 0.95) translateY(-2px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+
+.puzzle-solved-message {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px solid grey;
+  border-radius: 12px;
+  z-index: 1000;
+  animation: fadeInPop 0.6s ease;
+}
+
+@keyframes fadeInPop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }

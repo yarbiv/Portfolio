@@ -382,7 +382,7 @@ for (const block of blocks) {
       }}
       onTouchEnd={handleMouseUp}
     >
-  {puzzleSolved ? <p>Congrats!</p> : null}
+  {/* {puzzleSolved ? <p>Congrats!</p> : null} */}
       
       <button
   onClick={() => setUseColorHints(prev => !prev)}
@@ -395,14 +395,31 @@ for (const block of blocks) {
 >
   {useColorHints ? 'Hide Hint Colors' : 'Show Hint Colors'}
 </button>
+      <button
+  onClick={() => setPuzzleSolved(prev => !prev)}
+  style={{
+    position: 'absolute',
+    top: 50,
+    right: 10,
+    zIndex: 1000
+  }}
+>
+  {useColorHints ? 'Set unsolved' : 'Set solved'}
+</button>
       <div
-        className="tetris-grid"
+        className={`tetris-grid ${puzzleSolved ? '' : ''}`}
         style={{
           width: GRID_WIDTH * CELL_SIZE,
           height: GRID_HEIGHT * CELL_SIZE,
         }}
       >
-<div className="tetris-hint-layer">
+        {puzzleSolved && (
+  <div className="puzzle-solved-message">
+    wow, you're pretty good! TODO: point to the next clue
+  </div>
+)}
+<div className={`tetris-hint-layer ${puzzleSolved ? 'solved' : ''}`}>
+
   {PUZZLE_HINTS.map((row, y) =>
     row.map((cell, x) => {
       if (!cell) return null;

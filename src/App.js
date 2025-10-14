@@ -99,7 +99,7 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/yowza" component={ScavengerLandingPage} />
-            <Route path="/hiifht0726" component={PennsylvaniaStreetFlowerBushHint} />
+            <Route path="/hiifht0626" component={PennsylvaniaStreetFlowerBushHint} />
             <Route path="/stagecoachgreens" component={GiantsHint} />
             <Route path="/302-2992-10881-2062-3283-523-140-660-1903-1464-1526-387-557" component={HarbourCourtHint} />
             <Route path="/explore" component={ExploratoriumHint} />

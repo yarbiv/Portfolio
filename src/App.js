@@ -40,8 +40,8 @@ function GiantsHint() {
   return (
     <div >
       <img style={{width: '80vw'}} src='IMG_8188.jpeg' alt=''/>
-      <h2>Find an iron giant who went face to face with bats</h2>
-      <h2>Our next web address, pointed to by stats!</h2>
+      <h2>Find an iron giant who went face-to-face with bats</h2>
+      <h2>Our next address, let's fin<mark>d</mark> it with his stats!</h2>
       <h3>(separate with dashes!)</h3>
     </div>
   );
@@ -51,7 +51,7 @@ function GiantsHint() {
 function HarbourCourtHint() {
   return (
     <div >
-      <h2>i <u>Harbour</u> feelings for you, but the ball's in your <u>Court</u></h2>
+      <h2>i <u>harbour</u> feelings for you, but the ball's in your <u><mark>c</mark>ourt</u></h2>
       <h2>now remind me where we got picked up to taste a wonderful port?</h2>
     </div>
   );
@@ -73,7 +73,7 @@ function ChurchOfEightWheelsHint() {
   return (
     <div>
       <img style={{width: '80vw'}} src='IMG_1736.jpeg' alt=''/>
-      <h2>We go to church, but never in prayer</h2>
+      <h2>We go to church, but never in <mark>p</mark>rayer</h2>
       <h2>I fall here often – did someone pull out my chair?</h2>
       <h2>Watching you fly by, you're a regular athlete</h2>
       <h2>But if we need a twenty, what's the name of the place across the street?</h2>
@@ -85,7 +85,30 @@ function UnclePaulHint() {
   return (
     <div>
       <img style={{width: '80vw'}} src='IMG_9980.jpeg' alt=''/>
-      <h2></h2>
+      <h2>Erm... wh<mark>e</mark>re was this? 🤔</h2>
+    </div>
+  )
+}
+
+function GenkiHint() {
+  return (
+    <div>
+      <h2>They say you should shoot for the moon, you'll land among the stars,</h2>
+      <h2>We shot for a Laundromat and landed between a Green Apple and a bar!</h2>
+      <h2>No crazy puzzle here, but maybe we get on TouchTunes and spin some classics :)</h2>
+      <div style={{"width": "90vw", "margin": "auto"}}>
+     <iframe style={{"borderRadius":"12px"}} src="https://open.spotify.com/embed/playlist/35Fbp4s6Rr4lO7DERpdg9J?utm_source=generator" width="100%" height="352" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">test</iframe>
+      <iframe style={{"borderRadius":"12px"}} src="https://open.spotify.com/embed/playlist/6GA2lYC3RAOohlZ7yrUWiF?utm_source=generator" width="100%" height="352" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">test</iframe>
+      </div>
+    </div>
+  )
+}
+
+function InternetArchiveHint() {
+  return (
+    <div>
+      <h2>Digital love, how we dance together all night</h2>
+      <h2>Let's go where they'll store us, our memories as bytes &lt;3</h2>
     </div>
   )
 }
@@ -98,14 +121,16 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
-            <Route path="/yowza" component={ScavengerLandingPage} />
+            <Route path="/happybirthday" component={ScavengerLandingPage} />
             <Route path="/hiifht0626" component={PennsylvaniaStreetFlowerBushHint} />
             <Route path="/stagecoachgreens" component={GiantsHint} />
             <Route path="/302-2992-10881-2062-3283-523-140-660-1903-1464-1526-387-557" component={HarbourCourtHint} />
-            <Route path="/explore" component={ExploratoriumHint} />
+            <Route path="/blurby" component={ExploratoriumHint} />
             <Route path="/tetris" component={TetrisGrid} />
             <Route path="/post-tetris-lifestyle" component={ChurchOfEightWheelsHint} />
             <Route path="/keyfoodmarket" component={UnclePaulHint} />
+            <Route path="/paulies" component={GenkiHint} />
+            <Route path="/alicefreakmix" component={InternetArchiveHint} />
             <Route component={NoMatch} />
           </Switch>
         </Router>

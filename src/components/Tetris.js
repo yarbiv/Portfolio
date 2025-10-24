@@ -417,7 +417,7 @@ for (const block of blocks) {
       >
         {puzzleSolved && (
   <div className="puzzle-solved-message">
-  <LinkWrapper routerLink="/post-tetris-lifestyle">wow, you're pretty good! click here for your next hint :)</LinkWrapper>
+  <LinkWrapper routerLink="/post-tetris-lifestyle">wow, y<mark>o</mark>u're pretty good! click here for your next hint :)</LinkWrapper>
   </div>
 )}
 <div className={`tetris-hint-layer ${puzzleSolved ? 'solved' : ''}`}>

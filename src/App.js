@@ -97,8 +97,8 @@ function GenkiHint() {
       <h2>We shot for a Laundromat and landed between a Green Apple and a bar!</h2>
       <h2>No crazy puzzle here, but maybe we get on TouchTunes and spin some classics :)</h2>
       <div style={{"width": "90vw", "margin": "auto"}}>
-     <iframe style={{"borderRadius":"12px"}} src="https://open.spotify.com/embed/playlist/35Fbp4s6Rr4lO7DERpdg9J?utm_source=generator" width="100%" height="352" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">test</iframe>
-      <iframe style={{"borderRadius":"12px"}} src="https://open.spotify.com/embed/playlist/6GA2lYC3RAOohlZ7yrUWiF?utm_source=generator" width="100%" height="352" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">test</iframe>
+     <iframe style={{"borderRadius":"12px"}} title="her" src="https://open.spotify.com/embed/playlist/35Fbp4s6Rr4lO7DERpdg9J?utm_source=generator" width="100%" height="352" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">test</iframe>
+      <iframe style={{"borderRadius":"12px"}} title="mine" src="https://open.spotify.com/embed/playlist/6GA2lYC3RAOohlZ7yrUWiF?utm_source=generator" width="100%" height="352" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">test</iframe>
       </div>
     </div>
   )

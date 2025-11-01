@@ -1,0 +1,27 @@
+/* MinuteCrypticBoxes.css */
+.mcb-container {
+  display: flex;
+  justify-content: center;
+  gap: 4px; /* small gap between boxes */
+  padding: 8px 0; /* vertical spacing */
+}
+
+.mcb-box {
+  width: 48px;   /* adjust as needed */
+  height: 48px;  /* same to make square */
+  border: 1px solid #444;  /* approximate border colour */
+  background-color: #fff;
+  box-sizing: border-box;
+  font-size: 32px;           /* sized for readability */
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+/* Optional focus state when user types / box becomes active */
+.mcb-box.active {
+  border-color: #000;
+  /* maybe a subtle highlight */
+}

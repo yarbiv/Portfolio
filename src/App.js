@@ -2,6 +2,7 @@ import React from 'react';
 import About from './components/About.js'
 import Home from './components/Home.js'
 import TetrisGrid from './components/Tetris.js';
+import MinuteCrypticBoxes from './components/MinuteCrypticBoxes.js';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function NoMatch() {
@@ -113,6 +114,17 @@ function InternetArchiveHint() {
   )
 }
 
+function BalboaHint() {
+  return (
+    <div>
+      <h1>Yolice Cryptic</h1>
+      <h2>MDCCVII hangman location loses theatre? (4,6)</h2>
+      <MinuteCrypticBoxes length={4} />
+      <MinuteCrypticBoxes length={6} />
+    </div>
+  )
+}
+
 function App() {
   return (
     <div className='parent'>
@@ -131,6 +143,7 @@ function App() {
             <Route path="/keyfoodmarket" component={UnclePaulHint} />
             <Route path="/paulies" component={GenkiHint} />
             <Route path="/alicefreakmix" component={InternetArchiveHint} />
+            <Route path="/cryptic" component={BalboaHint} />
             <Route component={NoMatch} />
           </Switch>
         </Router>

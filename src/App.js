@@ -94,7 +94,7 @@ function UnclePaulHint() {
 function GenkiHint() {
   return (
     <div>
-      <h2>They say you should shoot for the moon, you'll land among the stars,</h2>
+      <h2>They say y<mark>o</mark>u should shoot for the moon, you'll land among the stars,</h2>
       <h2>We shot for a Laundromat and landed between a Green Apple and a bar!</h2>
       <h2>No crazy puzzle here, but maybe we get on TouchTunes and spin some classics :)</h2>
       <div style={{"width": "90vw", "margin": "auto"}}>

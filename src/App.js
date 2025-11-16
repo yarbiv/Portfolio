@@ -138,7 +138,7 @@ function App() {
             <Route path="/stagecoachgreens" component={GiantsHint} />
             <Route path="/302-2992-10881-2062-3283-523-140-660-1903-1464-1526-387-557" component={HarbourCourtHint} />
             <Route path="/blurby" component={ExploratoriumHint} />
-            <Route path="/tetris" component={TetrisGrid} />
+            <Route path="/smicky" component={TetrisGrid} />
             <Route path="/post-tetris-lifestyle" component={ChurchOfEightWheelsHint} />
             <Route path="/keyfoodmarket" component={UnclePaulHint} />
             <Route path="/paulies" component={GenkiHint} />

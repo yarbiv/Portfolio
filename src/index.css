@@ -61,7 +61,7 @@
     font-size: 4vw;
   }
 
-  a.about-text {
+  a.about-text: {
     color: #757474;
     text-decoration: none;
     transition: color 0.45s ease-in-out;
@@ -145,7 +145,7 @@
     transition: color 0.45s ease-in-out;
   }
 
-  a.about-text {
+  a.about-text: {
     color: #757474;
     text-decoration: none;
   }

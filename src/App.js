@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 function NoMatch() {
   return (
     <div>
-      <h1>Where do you think you're going?</h1>
+      <h1>Lost?</h1>
       <Link to="/" className='link-child'>Let me take you home :)</Link>
     </div>
   );
